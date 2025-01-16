@@ -36,33 +36,88 @@ Word replacement logic - Ticket 10
   expect(result).toEqual(expected);
 }); */
 
+// Mass test that checks if function is fully functional
 test("should return a sequence from 0 to n, correctly replacing numbers in the chosen range with words in instructions, based on divisibility", () => {
-  const n = 15;
-  const expected = [
-    1,
-    2,
-    "purple",
-    4,
-    "burglar",
-    "purple",
-    "alarm",
-    8,
-    "purple",
-    "burglar",
-    11,
-    "purple",
-    13,
-    "alarm",
-    "purple-burglar",
-  ];
+  const n = 105;
+
+  const expected = [];
+
+  for (let i = 1; i <= n; i++) {
+    if (i % 3 === 0 && i % 5 === 0 && i % 7 === 0) {
+      expected.push("purple-burglar-alarm");
+    } else if (i % 3 === 0 && i % 5 === 0) {
+      expected.push("purple-burglar");
+    } else if (i % 5 === 0 && i % 7 === 0) {
+      expected.push("burglar-alarm");
+    } else if (i % 3 === 0 && i % 7 === 0) {
+      expected.push("purple-alarm");
+    } else if (i % 3 === 0) {
+      expected.push("purple");
+    } else if (i % 5 === 0) {
+      expected.push("burglar");
+    } else if (i % 7 === 0) {
+      expected.push("alarm");
+    } else {
+      expected.push(i);
+    }
+  }
 
   const result = tongueTwister(n);
 
   expect(result).toEqual(expected);
 });
 
-// Ignore these, copilot suggestions. Maybe come back to them though
-/* test("inputs should be numbers", () => {
-  expect(() => tongueTwisterWrapper("test", "jest")).toThrow("Not a number");
+// Splitting different word replacements into seperate tests
+
+// PURPLE
+test("should replace numbers divisible by 3 with 'purple'", () => {
+  const n = 105;
+  const result = tongueTwister(n);
+
+  expect(result[2]).toBe("purple");
 });
- */
+
+// BURGLAR
+test("should replace numbers divisibile by 5 with 'burglar'", () => {
+  const n = 105;
+  const result = tongueTwister(n);
+
+  expect(result[4]).toBe("burglar");
+});
+
+// ALARM
+test("should replace numbers divisible by 7 with 'alarm'", () => {
+  const n = 105;
+  const result = tongueTwister(n);
+
+  expect(result[6]).toBe("alarm");
+});
+
+// PURPLE-BURGLAR
+test("should replace numbers divisible by 3 AND 7 with 'purple-alarm'", () => {
+  const n = 105;
+  const result = tongueTwister(n);
+
+  expect(result[20]).toBe("purple-alarm");
+});
+
+test("should replace numbers divisible by 3 AND 5 with 'purple-burglar'", () => {
+  const n = 105;
+  const result = tongueTwister(n);
+
+  expect(result[14]).toBe("purple-burglar");
+});
+
+test("should replace numbers divisible by 5 and 7 with 'burglar-alarm'", () => {
+  const n = 105;
+  const result = tongueTwister(n);
+
+  expect(result[34]).toBe("burglar-alarm");
+});
+
+test("should replace numbers divisible by 3, 5 AND 7 with 'purple-burglar-alarm'", () => {
+  const n = 105;
+  const result = tongueTwister(n);
+
+  expect(result[104]).toBe("purple-burglar-alarm");
+});
