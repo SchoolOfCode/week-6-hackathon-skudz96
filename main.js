@@ -15,9 +15,16 @@
     Most importantly: ANY OVERLAPS IN DIVISIBLE NUMBERS HAVE TO PRINT BOTH WORDS. For example, if 15 was to be returned, 15 is divisible by both 3 and 5, so it will instead return "bold-bugs"
 */
 
-export function tongueTwister(numOne, numTwo) {
-  /*  numOne = 1;
-  numTwo = 50; */
-
-  return numOne + ", " + numTwo;
+// Main function others will solve
+export function tongueTwister(n) {
+  return n;
 }
+
+/* // Wrapper function suggested by copilot to include error handling
+export function tongueTwisterWrapper(numOne, numTwo) {
+  if (typeof numOne !== "number" || typeof numTwo !== "number") {
+    throw new Error("Not a number");
+  }
+  return tongueTwister(numOne, numTwo);
+}
+ */
