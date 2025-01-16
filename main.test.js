@@ -93,7 +93,7 @@ test("should replace numbers divisible by 7 with 'alarm'", () => {
   expect(result[6]).toBe("alarm");
 });
 
-// PURPLE-BURGLAR
+// PURPLE-ALARM
 test("should replace numbers divisible by 3 AND 7 with 'purple-alarm'", () => {
   const n = 105;
   const result = tongueTwister(n);
@@ -101,6 +101,7 @@ test("should replace numbers divisible by 3 AND 7 with 'purple-alarm'", () => {
   expect(result[20]).toBe("purple-alarm");
 });
 
+// PURPLE-BURGLAR
 test("should replace numbers divisible by 3 AND 5 with 'purple-burglar'", () => {
   const n = 105;
   const result = tongueTwister(n);
@@ -108,6 +109,7 @@ test("should replace numbers divisible by 3 AND 5 with 'purple-burglar'", () => 
   expect(result[14]).toBe("purple-burglar");
 });
 
+// BURGLAR-ALARM
 test("should replace numbers divisible by 5 and 7 with 'burglar-alarm'", () => {
   const n = 105;
   const result = tongueTwister(n);
@@ -115,9 +117,23 @@ test("should replace numbers divisible by 5 and 7 with 'burglar-alarm'", () => {
   expect(result[34]).toBe("burglar-alarm");
 });
 
+// PURPLE-BURGLAR-ALARM
 test("should replace numbers divisible by 3, 5 AND 7 with 'purple-burglar-alarm'", () => {
   const n = 105;
   const result = tongueTwister(n);
 
   expect(result[104]).toBe("purple-burglar-alarm");
+});
+
+// Numbers
+test("should print numbers up to n'", () => {
+  const n = 105;
+  const result = tongueTwister(n);
+  const expected = [];
+
+  for (let i = 1; i <= n; i++) {
+    expected.push(i);
+  }
+
+  expect(result).toEqual(expected);
 });
