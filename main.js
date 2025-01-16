@@ -17,8 +17,14 @@
 export function tongueTwister(n) {
   let array = [];
   for (let i = 1; i <= n; i++) {
-    if (i % 3 === 0 && i % 5 === 0) {
+    if (i % 3 === 0 && i % 5 === 0 && i % 7 === 0) {
+      array.push("purple-burglar-alarm");
+    } else if (i % 3 === 0 && i % 5 === 0) {
       array.push("purple-burglar");
+    } else if (i % 5 === 0 && i % 7 === 0) {
+      array.push("burglar-alarm");
+    } else if (i % 3 === 0 && i % 7 === 0) {
+      array.push("purple-alarm");
     } else if (i % 3 === 0) {
       array.push("purple");
     } else if (i % 5 === 0) {
