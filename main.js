@@ -2,13 +2,11 @@
     Hello challenger! Here are your instructions:
     You are given 5 words, each assigned with a number -
 
-                3 => Bold
-                5 => Bugs
-                7 => Build
-                9 => Big
-                11 => Binaries
+                3 => Purple
+                5 => Burglar
+                7 => Alarm
 
-    Your task is to write a function named "tongueTwister" which takes in 2 numbers as parameters. These numbers indicate the ranges your function will cover, For example, inputting 1 and 50 would cause your function to return every number from 1 to 50.
+    Your task is to write a function named "tongueTwister" which takes in a number as parameters. This number indicates the maximum number the function will increment to. E.g. if n = 50, the function will return 1-50.
 
     Every number that is divisible by 3, will instead return "bold" as a string. Every number that is divisible by 5 will instead return "bugs", and so on. 
 
@@ -17,9 +15,24 @@
 
 // Main function others will solve
 export function tongueTwister(n) {
-  return n;
+  let array = [];
+  for (let i = 1; i <= n; i++) {
+    if (i % 3 === 0 && i % 5 === 0) {
+      array.push("purple-burglar");
+    } else if (i % 3 === 0) {
+      array.push("purple");
+    } else if (i % 5 === 0) {
+      array.push("burglar");
+    } else if (i % 7 === 0) {
+      array.push("alarm");
+    } else {
+      array.push(i);
+    }
+  }
+  return array;
 }
 
+// Ignore these, copilot suggestions. Maybe come back to them though
 /* // Wrapper function suggested by copilot to include error handling
 export function tongueTwisterWrapper(numOne, numTwo) {
   if (typeof numOne !== "number" || typeof numTwo !== "number") {
